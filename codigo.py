@@ -31,6 +31,13 @@ while True:
             senha=sha256(senha.encode()).digest()
             senhas.append(senha)
             print("Conta criada com sucesso!")
+        
+        with open('usuarios_senhas.txt','w') as arq_users:
+            for user in usuarios:
+                arq_users.write(usuarios[i])
+                arq_users.write(';')
+                arq_users.write(senhas[i])
+                arq_users.write('\n')
 
 
     elif int(opcao) == 3:
@@ -41,12 +48,4 @@ while True:
     else: 
         print("Opção Inválida, tente novamente")
 
-with open('usuarios.txt','w') as arq_users:
-  for user in usuarios:
-    arq_users.write(user)
-    arq_users.write('\n')
 
-with open('senhas.txt','w') as arq_senhas:
-  for sen in senhas:
-    arq_senhas.write(str(sen))
-    arq_senhas.write('\n') 
